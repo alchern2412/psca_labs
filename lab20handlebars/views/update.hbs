@@ -1,0 +1,26 @@
+{{>header}}
+<div class="container">
+
+    <div>
+        {{>phonesList}}
+    </div>
+    {{name}} - {{number}}
+    <div>
+        <form action="/update" method="post" class="my-2">
+            <input type="text" hidden name="oldName" value="{{name}}" />
+            <input type="text" hidden name="oldNumber" value="{{number}}" />
+            <input type="text" name="name" value="{{name}}" />
+            <input type="text" name="number" value="{{number}}" /> <br/>
+            <input type="submit" value="Обновить" class="btn btn-success"/>
+        </form>
+        <form action="/delete" method="post" class="my-2">
+            <input type="text" hidden name="name" value="{{name}}" />
+            <input type="text" hidden name="value" value="{{number}}" />
+            <input type="submit" value="Удалить" class="btn btn-danger">
+        </form>
+        <form action="/" method="get" class="my-2">
+            <input type="submit" value="Отмена" class="btn btn-warning">
+        </form>
+    </div>
+</div>
+<!--{{>footer}}-->

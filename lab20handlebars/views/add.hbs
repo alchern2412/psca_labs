@@ -1,0 +1,18 @@
+{{>header}}
+<div class="container">
+
+    <div>
+        {{>phonesList}}
+    </div>
+    <div>
+        <form action="/add" method="post">
+            <input type="text" name="name" />
+            <input type="text" name="number" />
+            <input type="submit" value="Добавить" class="btn btn-success"/>
+        </form>
+        <form action="/" method="get">
+            <input type="submit" value="Отмена" class="btn btn-warning">
+        </form>
+    </div>
+</div>
+<!--{{>footer}}-->
