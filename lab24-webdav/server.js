@@ -8,10 +8,6 @@ const app = express()
 app.use(express.json({ extended: false }))
 app.use(fileUpload())
 
-// app.get('/', (req, res) => {
-//     res.send('API Runnig')
-// })
-
 app.use('/api/webdav', require('./routes/api/webdav'))
 
 const PORT = process.env.PORT || 5000
