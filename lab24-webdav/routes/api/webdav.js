@@ -69,7 +69,7 @@ router.post('/up/:filename', async (req, res) => {
 
 // @route   POST /down/:filename
 // @desc    Скачать файл из ФХ и выгрузить его клиенту -> при ошибке 404
-router.post('/down/:filename', async (req, res) => {
+router.get('/down/:filename', async (req, res) => {
     try {
         const filename = req.params.filename
 
@@ -102,6 +102,9 @@ router.post('/del/:filename', async (req, res) => {
     } catch (err) {
         console.error(err.message)
         res.status(500).send('Server error')
+    } finally {
+        console.log('su');
+
     }
 })
 
