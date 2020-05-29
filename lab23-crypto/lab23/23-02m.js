@@ -1,7 +1,7 @@
 const crypto = require('crypto')
 
 function ServerSign() {
-    const {privateKey, publicKey} = crypto
+    const { privateKey, publicKey } = crypto
         .generateKeyPairSync('rsa', {
             modulusLength: 2048,
             publicKeyEncoding: {

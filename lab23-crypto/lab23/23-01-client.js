@@ -16,17 +16,17 @@ const getContextRequest = () => {
         method: 'GET'
     }
     request(options, (err, res) => {
-        // console.log(err, res.body)
         if (!err) {
             serverContext = JSON.parse(res.body)
-            console.log('serverContext', serverContext)
+            console.log('serverContext:', serverContext)
             calcEncryptionKey(serverContext)
         } else {
             console.error(err)
         }
     })
 }
-getContextRequest()
+
+getContextRequest() 
 
 // --- КЛИЕНТ
 const calcEncryptionKey = serverContext => {
@@ -71,8 +71,6 @@ const getFileFromServer = () => {
         if (!err) {
             console.log(res.body)
             const encryptedData = JSON.parse(res.body)
-
-
             const iv = Buffer.alloc(16, 0)
             const key = crypto.scryptSync(clientSecret, 'salt', 32)
 

@@ -45,12 +45,8 @@ app.post('/:id', (req, res) => {
 app.get('/resource/:id', (req, res) => {
     try {
         const id = req.params.id
-        console.log('id', id)
         const file = fs.readFileSync('./serverFile.txt', 'utf-8')
-        console.log('file:', file)
         const client = clients.find(client => client.id === id)
-        console.log('client', client)
-        console.log('clients', clients)
         if (!client) {
             return res.status(404).json({msg: 'Client not found'})
         }
@@ -71,15 +67,6 @@ app.get('/resource/:id', (req, res) => {
             .toString('utf8')
 
         console.log('decryptedData', decryptedData)
-        // let encryption = crypto.createCipheriv('aes-256-cbc', key, iv)
-        // let encryptedTxt = encryption.update(file)
-        // encryptedTxt = Buffer.concat([encryptedTxt, encryption.final()])
-        //
-        // console.log(file, ' => ', encryptedTxt.toString('hex'))
-        // encryptedTxt = iv.toString('hex') + ':' + encryptedTxt.toString('hex')
-        // console.log('EncryptedTxt: ', encryptedTxt)
-
-
 
         res.json({file: encryptedFile})
     } catch (e) {
