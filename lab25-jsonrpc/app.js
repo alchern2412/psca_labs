@@ -23,8 +23,32 @@ let bin_validator = param => {
     return param
 }
 
-server.on('sum', bin_validator, (params, channel, response) => {
-    response(null, params[0] + params[1])
+const several_validator = param => {
+    console.log('validator', param);
+    if (!Array.isArray(param)) {
+        throw new Error('Expected Array')
+    }
+    param.forEach(el => {
+        if (!isFinite(el)) {
+            throw new Error('Expected array of numbers')
+        }
+    })
+    return param
+}
+
+server.on('sum', several_validator, (params, channel, response) => {
+    response(null, params.reduce((accumulator, currentValue) => (accumulator + currentValue)))
+})
+
+server.on('mul', several_validator, (params, channel, response) => {
+    response(null, params.reduce((accumulator, currentValue) => (accumulator * currentValue)))
+})
+
+server.on('div', bin_validator, (params, channel, response) => {
+    response(null, params[0] / params[1])
+})
+server.on('proc', bin_validator, (params, channel, response) => {
+    response(null, params[0] / params[1] * 100)
 })
 
 
