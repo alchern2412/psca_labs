@@ -10,7 +10,10 @@ const bot = new TelegramBot(TOKEN, {
 
 bot.on('message', msg => {
     const chatId = msg.chat.id
+    if (msg.text.trim() === 'илья') {
+        return bot.sendMessage(chatId, `${msg.text} дурачок))`)
 
+    }
     bot.sendMessage(chatId, `echo ${msg.text}`)
 })
 
