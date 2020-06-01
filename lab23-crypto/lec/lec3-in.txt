@@ -1,0 +1,1 @@
+This is my text in 'in file.txt' to encryption. Thank you!

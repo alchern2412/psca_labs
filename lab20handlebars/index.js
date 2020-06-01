@@ -20,7 +20,9 @@ const hbs = require('express-handlebars').create({
     }
 })
 
-app.set('port', 3000)
+const PORT = process.env.PORT || 80
+
+app.set('port', PORT)
 app.engine('.hbs', hbs.engine)
 app.set('view engine', '.hbs')
 
